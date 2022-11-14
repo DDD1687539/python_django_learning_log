@@ -45,8 +45,10 @@ def new_entry(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
 
     if request.method != 'POST':
+        print("new entry. GET")
         form = EntryForm()
     else:
+        print("new entry. POST")
         form = EntryForm(data=request.POST)
         if form.is_valid():
             new_entry = form.save(commit=False)
